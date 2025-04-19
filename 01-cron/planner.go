@@ -75,10 +75,7 @@ func (p *Planner) runExpired() {
 		}
 
 		taskToRun, _ := p.cronTasks.Pop()
-
-		p.mu.Unlock()
 		taskToRun.task.Exec()
-		p.mu.Lock()
 	}
 }
 
